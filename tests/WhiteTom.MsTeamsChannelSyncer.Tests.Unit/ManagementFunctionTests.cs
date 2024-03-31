@@ -1,10 +1,25 @@
-namespace WhiteTom.MsTeamsChannelSyncer.Tests.Unit;
+using Microsoft.Extensions.Logging;
+using Microsoft.Graph;
+using NSubstitute;
 
-public class UnitTest1
+namespace WhiteTom.MsTeamsChannelSyncer.Tests.Unit
 {
-    [Fact]
-    public void Test1()
+    public class ManagementFunctionTests
     {
+        private readonly ManagementFunction _managementFunction;
+        private readonly ILoggerFactory _loggerFactory = Substitute.For< ILoggerFactory>();
+        private readonly GraphServiceClient _graphClient = Substitute.For<GraphServiceClient>();
 
+
+        public ManagementFunctionTests()
+        {
+            _managementFunction = new ManagementFunction(_loggerFactory, _graphClient);
+        }
+
+        [Fact]
+        public void Test1()
+        {
+
+        }
     }
 }

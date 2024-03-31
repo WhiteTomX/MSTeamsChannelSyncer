@@ -5,17 +5,19 @@ using Microsoft.Graph;
 
 namespace WhiteTom.MsTeamsChannelSyncer
 {
-    public class Management
+    public class ManagementFunction
     {
         private readonly ILogger _logger;
+        private readonly GraphServiceClient _graphClient;
 
-        public Management(ILoggerFactory loggerFactory)
+        public ManagementFunction(ILoggerFactory loggerFactory, GraphServiceClient graphClient)
         {
-            _logger = loggerFactory.CreateLogger<Management>();
+            _logger = loggerFactory.CreateLogger<ManagementFunction>();
+            _graphClient = graphClient;
         }
 
         [Function("Management")]
-        public void Run([TimerTrigger("0 0 0 */2 * *")] TimerInfo myTimer, GraphServiceClient graphClient)
+        public void Run([TimerTrigger("0 0 0 */2 * *")] TimerInfo myTimer)
         {
             _logger.LogInformation($"C# Timer trigger function executed at: {DateTime.Now}");
 
