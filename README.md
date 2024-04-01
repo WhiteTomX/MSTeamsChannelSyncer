@@ -8,6 +8,18 @@ Synchronize members of private Microsoft teams channels
 - [ ] Full synchronization on changes
 - [ ] Delta synchronization on changes
 - [ ] Two way sync
+- [ ] Also sync the Roles of users
+
+## Required Configuration
+
+The AppSettings must contain the following settings:
+
+- `SourceTeamId`
+- `SourceChannelId`
+- `TargetTeamId`
+- `TargetChannelId`
+
+How to obtain will be added when that is know.
 
 ## Architecture
 

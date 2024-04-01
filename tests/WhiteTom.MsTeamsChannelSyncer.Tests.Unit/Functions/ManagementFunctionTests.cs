@@ -10,7 +10,7 @@ namespace WhiteTom.MsTeamsChannelSyncer.Tests.Unit.Functions
     {
         private readonly ManagementFunction _managementFunction;
         private readonly ILoggerFactory _loggerFactory = Substitute.For<ILoggerFactory>();
-        private readonly SynchronizationService _synchronizationService = Substitute.For<SynchronizationService>();
+        private readonly ISynchronizationService _synchronizationService = Substitute.For<ISynchronizationService>();
 
 
         public ManagementFunctionTests()

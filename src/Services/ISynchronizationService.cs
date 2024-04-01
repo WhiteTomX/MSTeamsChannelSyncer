@@ -6,11 +6,8 @@ using System.Threading.Tasks;
 
 namespace WhiteTom.MsTeamsChannelSyncer.Services
 {
-    public class SynchronizationService
+    public interface ISynchronizationService
     {
-        public void FullSynchronization()
-        {
-
-        }
+        public void FullSynchronization();
     }
 }
