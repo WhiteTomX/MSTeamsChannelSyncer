@@ -5,7 +5,7 @@ Synchronize members of private Microsoft teams channels
 ## Roadmap
 
 - [ ] Full synchronizations on timer
-- [ ] Full synchronization on changes
+- [ ] Delta synchronization on timer
 - [ ] Delta synchronization on changes
 - [ ] Two way sync
 - [ ] Also sync the Roles of users
