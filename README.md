@@ -74,7 +74,9 @@ sequenceDiagram
 
 ## Local Development
 
-1. Add the required app settings to `src\local.settings.json`
+### App settings
+
+Add the required app settings to `src\local.settings.json`
 
 ```json
 {
@@ -90,4 +92,16 @@ sequenceDiagram
 }
 ```
 
-2. Authenticate to Azure
+### Authenticate to Azure
+
+Due to a [missing feature](https://github.com/Azure/azure-cli/issues/22775) in the azure cli, we can't use a simple login to use it in the background.
+
+### Execute function
+
+To execute a non HTTP triggered function you can post `http://localhost:7044/admin/functions/Management`
+
+```json
+{
+    "input": null
+}
+```
