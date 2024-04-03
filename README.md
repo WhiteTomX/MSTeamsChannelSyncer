@@ -19,7 +19,9 @@ The AppSettings must contain the following settings:
 - `TargetTeamId`
 - `TargetChannelId`
 
-How to obtain will be added when that is know.
+To obtain these information, copy the link to each channel:
+
+`https://teams.microsoft.com/l/channel/<ChannelId>/Target?groupId=<TeamId>&tenantId=<ignore the tenant id>&ngc=true`
 
 ## Architecture
 
@@ -69,3 +71,23 @@ sequenceDiagram
     end
     deactivate subEndpoint
 ```
+
+## Local Development
+
+1. Add the required app settings to `src\local.settings.json`
+
+```json
+{
+  "IsEncrypted": false,
+  "Values": {
+    "AzureWebJobsStorage": "UseDevelopmentStorage=true",
+    "FUNCTIONS_WORKER_RUNTIME": "dotnet-isolated",
+    "SourceTeamId": "1a2132134-d3434-2134-21323-wre2342354",
+    "SourceChannelId": "19%3876jhhgAjhhgugu%40thread.tacv2",
+    "TargetTeamId": "1a2132134-d3434-2134-21323-wre2342354",
+    "TargetChannelId": "19%Akhih987asai9uhiu%40thread.tacv2"
+  }
+}
+```
+
+2. Authenticate to Azure
