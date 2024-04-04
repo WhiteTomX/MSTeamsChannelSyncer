@@ -23,6 +23,8 @@ To obtain these information, copy the link to each channel:
 
 `https://teams.microsoft.com/l/channel/<ChannelId>/Target?groupId=<TeamId>&tenantId=<ignore the tenant id>&ngc=true`
 
+If you cant copy the link to the channel, you can open up the Channel in a browser and use the `threadid` replace `:` with url encoded `%3A`. The Team Id can be used from copying the link to the general channel.
+
 ## Architecture
 
 As membership changes may not happen often the solution uses serverless Azure functions. To avoid polling the API, subscriptions are used. Although full synchronization would hurt that much, the solution uses DeltaQueries to only poll changes instead of comparing all members.
@@ -95,6 +97,8 @@ Add the required app settings to `src\local.settings.json`
 ### Authenticate to Azure
 
 Due to a [missing feature](https://github.com/Azure/azure-cli/issues/22775) in the azure cli, we can't use a simple login to use it in the background.
+
+Probably the solution is to create a Service Principal and add is as Environment variables or login via az cli.
 
 ### Execute function
 
