@@ -76,36 +76,4 @@ sequenceDiagram
 
 ## Local Development
 
-### App settings
-
-Add the required app settings to `src\local.settings.json`
-
-```json
-{
-  "IsEncrypted": false,
-  "Values": {
-    "AzureWebJobsStorage": "UseDevelopmentStorage=true",
-    "FUNCTIONS_WORKER_RUNTIME": "dotnet-isolated",
-    "SourceTeamId": "1a2132134-d3434-2134-21323-wre2342354",
-    "SourceChannelId": "19%3876jhhgAjhhgugu%40thread.tacv2",
-    "TargetTeamId": "1a2132134-d3434-2134-21323-wre2342354",
-    "TargetChannelId": "19%Akhih987asai9uhiu%40thread.tacv2"
-  }
-}
-```
-
-### Authenticate to Azure
-
-Due to a [missing feature](https://github.com/Azure/azure-cli/issues/22775) in the azure cli, we can't use a simple login to use it in the background.
-
-Probably the solution is to create a Service Principal and add is as Environment variables or login via az cli.
-
-### Execute function
-
-To execute a non HTTP triggered function you can post `http://localhost:7044/admin/functions/Management`
-
-```json
-{
-    "input": null
-}
-```
+See [./local_development/README.md](./local_development/README.md).

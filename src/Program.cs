@@ -15,7 +15,7 @@ var host = new HostBuilder()
         services.ConfigureFunctionsApplicationInsights();
         services.AddSingleton<GraphServiceClient>(_ =>
         {
-            var scopes = new[] { "https://graph.microsoft.com/ChannelMember.ReadWrite.All" };
+            var scopes = new[] { "https://graph.microsoft.com/.default" };
             return new GraphServiceClient(new DefaultAzureCredential(), scopes);
         });
         services.AddSingleton<IConfigurationRepository, ConfigurationRepository>();

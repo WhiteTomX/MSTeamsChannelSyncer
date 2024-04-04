@@ -14,7 +14,7 @@ namespace WhiteTom.MsTeamsChannelSyncer.Repositories
         private readonly ILogger<GraphChannelRepository> _logger;
         private readonly GraphServiceClient _graphclient;
 
-        public GraphChannelRepository(ILogger<GraphChannelRepository> logger, GraphServiceClient graphclient) 
+        public GraphChannelRepository(ILogger<GraphChannelRepository> logger, GraphServiceClient graphclient)
         {
             _logger = logger;
             _graphclient = graphclient;
@@ -26,7 +26,7 @@ namespace WhiteTom.MsTeamsChannelSyncer.Repositories
             {
                 OdataType = "#microsoft.graph.aadUserConversationMember",
                 Roles = new List<string>(),
-                AdditionalData = new Dictionary<string,object>
+                AdditionalData = new Dictionary<string, object>
                 {
                     {
                     "user@odata.bind" , $"https://graph.microsoft.com/v1.0/users('{id}')"
@@ -49,10 +49,11 @@ namespace WhiteTom.MsTeamsChannelSyncer.Repositories
         {
             var task = _graphclient.Teams[teamId].Channels[channelId].Members.GetAsync();
             task.Wait();
-            if(null !=  task.Result && null != task.Result.Value)
+            if (null != task.Result && null != task.Result.Value)
             {
+                //cast to AadConversationMember
                 var members = task.Result.Value.Select(m => m.AdditionalData["userId"].ToString());
-                if(members.Any(m=> m==null))
+                if (members.Any(m => m == null))
                 {
                     _logger.LogWarning(Events.MemberNull, "Id of a member was null.");
                     return members.Where(m => m != null)!;
