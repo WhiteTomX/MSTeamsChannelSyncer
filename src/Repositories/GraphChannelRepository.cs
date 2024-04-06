@@ -52,7 +52,18 @@ namespace WhiteTom.MsTeamsChannelSyncer.Repositories
             if (null != task.Result && null != task.Result.Value)
             {
                 //cast to AadConversationMember
-                var members = task.Result.Value.Select(m => m.AdditionalData["userId"].ToString());
+                var members = task.Result.Value.Select(m =>
+                {
+                    if (m is AadUserConversationMember aadMember)
+                    {
+                        return aadMember.UserId;
+                    }
+                    else
+                    {
+                        _logger.LogWarning(Events.GraphUnknownMemberType, "Unknown member type: {0} of {1} in channel {2} of team {3}", m.GetType(), m.Id, channelId, teamId);
+                        return null;
+                    }
+                });
                 if (members.Any(m => m == null))
                 {
                     _logger.LogWarning(Events.MemberNull, "Id of a member was null.");

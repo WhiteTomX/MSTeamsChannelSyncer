@@ -8,5 +8,6 @@ namespace WhiteTom.MsTeamsChannelSyncer
         public const int UserRemovedSuccessfully = 20;
         public const int UserRemovedFailed = 21;
         public const int MemberNull = 2;
+        public const int GraphUnknownMemberType = 100;
     }
 }
